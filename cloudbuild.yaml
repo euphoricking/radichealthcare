@@ -10,6 +10,10 @@ steps:
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['-m', 'cp', '-r', 'sql/*', 'gs://radichealthcarebucket/sql/']
 
+# Upload DAG files
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['-m', 'cp', '-r', 'dags/*', 'gs://northamerica-northeast1-rad-da524dbe-bucket/dags']
+
 # Upload requirements.txt
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', 'requirements.txt', 'gs://radichealthcarebucket/requirements/']
