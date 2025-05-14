@@ -1,0 +1,23 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+steps:
+# Upload ETL files
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['-m', 'cp', '-r', 'etl/*', 'gs://radichealthcarebucket/etl/']
+
+# Upload SQL files
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['-m', 'cp', '-r', 'sql/*', 'gs://radichealthcarebucket/sql/']
+
+# Upload requirements.txt
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', 'requirements.txt', 'gs://radichealthcarebucket/requirements/']
+
+# Upload README
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', 'README.md', 'gs://radichealthcarebucket/docs/']
+
+# Upload cloudbuild.yaml
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', 'cloudbuild.yaml', 'gs://radichealthcarebucket/configs/']
